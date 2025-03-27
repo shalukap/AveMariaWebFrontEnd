@@ -23,10 +23,11 @@ export default function NewsPage() {
         }
         const user=jwtDecode(token)
         setUser(user)         
-        const res=await axios.get('http://localhost:3000/api/news',{
+        const res=await axios.get(`${import.meta.env.VITE_BASE_URL}/api/news`,{
             headers:{Authorization:`Bearer ${token}`}}
         ).then((res)=>{
-          setNews(res.data)        
+          console.log(res.data);          
+          setNews(res.data)   
           
         }).catch((err)=>{
           console.log(err)

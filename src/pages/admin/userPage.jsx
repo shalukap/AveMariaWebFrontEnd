@@ -22,7 +22,7 @@ export default function UserPage() {
                 }
                 const user=jwtDecode(token)
                 setUser(user)
-                const res = await axios.get('http://localhost:3000/api/users/').then((res) => {
+                const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/users/`).then((res) => {
                   if(user.role === 'Admin'){
                     setUsers(res.data)
                     

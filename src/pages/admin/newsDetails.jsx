@@ -41,7 +41,7 @@ export default function NewsDetails() {
                 // take the data to news page
                 if(id){  
                      
-                    await axios.get('http://localhost:3000/api/news/' + id,{
+                    await axios.get(`${import.meta.env.VITE_BASE_URL}/api/news/` + id,{
                         headers:{Authorization:`Bearer ${token}`}
                     }).then((res) => {                       
                         const news = res.data[0]
@@ -85,7 +85,7 @@ export default function NewsDetails() {
         }
         try {
             if(id){
-                const res=axios.put('http://localhost:3000/api/news/' + id,newsData,
+                const res=axios.put(`${import.meta.env.VITE_BASE_URL}/api/news/` + id,newsData,
                     {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}).then((res)=>{
                     toast.success('News updated successfully')
                     setTimeout(() => navigate("/admin/news"), 1000);
@@ -95,7 +95,7 @@ export default function NewsDetails() {
                 return
             }else{
                 
-            const res=axios.post('http://localhost:3000/api/news',newsData,
+            const res=axios.post(`${import.meta.env.VITE_BASE_URL}/api/news`,newsData,
                 {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}).then((res)=>{
                 toast.success('News added successfully')
                 setTimeout(() => navigate("/admin/news"), 1000);

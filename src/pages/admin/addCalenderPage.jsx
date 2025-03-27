@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
 
+
 export default function AddCalenderPage() {
     
     const [date,setDate]=useState("")
@@ -24,7 +25,7 @@ export default function AddCalenderPage() {
                 const user=jwtDecode(token)               
                 setEnteredBy(user.name)
                 if (id) {
-                  axios.get('http://localhost:3000/api/calender/' + id).then((res) => {
+                  axios.get(`${import.meta.env.VITE_BASE_URL}/api/calender/` + id).then((res) => {
                     const event = res.data            
                     
                     setDate(event[0].date)

@@ -9,7 +9,7 @@ export default function News() {
   useEffect(() => {
     const fetchNews=async()=>{
       try {
-        const res=await axios.get('http://localhost:3000/api/news').then((res)=>{
+        const res=await axios.get(`${import.meta.env.VITE_BASE_URL}/api/news`).then((res)=>{
           setNews(res.data)
         }).catch((err)=>{
           console.log(err)

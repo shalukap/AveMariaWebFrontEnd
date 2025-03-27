@@ -33,7 +33,7 @@ export default function userRegisterPage() {
                 setIsAdmin(user.role === 'Admin')
                 setIsEdit(uid)
                 if (uid) {
-                  axios.get('http://localhost:3000/api/users/' + uid).then((res) => {
+                  axios.get(`${import.meta.env.VITE_BASE_URL}/api/users/` + uid).then((res) => {
                     const user = res.data                                       
                     setFname(user[0].name)
                     setEmail(user[0].email)                   
@@ -70,7 +70,7 @@ export default function userRegisterPage() {
             if (password){
                 data.password=password
             }
-            const result = await axios.put('http://localhost:3000/api/users/' + uid, data,{
+            const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/users/` + uid, data,{
                 headers:{Authorization:"Bearer"+token}
             }).then((res) => {
                 toast.success('User updated successfully')
@@ -80,7 +80,7 @@ export default function userRegisterPage() {
                 navigate('/admin/users')
             })
         }else{
-            const result = await axios.post('http://localhost:3000/api/users/register', {
+            const result = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/users/register`, {
                 name:fname,
                 email:email,
                 password:password,

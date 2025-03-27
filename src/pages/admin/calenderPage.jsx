@@ -22,7 +22,7 @@ export default function CalenderPage() {
         }
         const user = jwtDecode(token)
         setUser(user)
-        const res = await axios.get('http://localhost:3000/api/calender').then((res) => {
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/calender`).then((res) => {
           setEvents(res.data)
         }).catch((err) => {
           console.log(err)
