@@ -19,7 +19,7 @@ export default function Login() {
             axios.post(`${import.meta.env.VITE_BASE_URL}/api/users/login`,{
                 email:email,
                 password:password
-            },{withCredentials:true}).then((res)=>{                 
+            }).then((res)=>{                 
                 const user=res.data.user           
                 localStorage.setItem('token',res.data.token)     
                 if ((user.role === 'Admin' || user.role === 'Author'|| user.role === 'Photographer')&& user.status==="Active") {
