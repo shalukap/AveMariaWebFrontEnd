@@ -14,7 +14,7 @@ import axios from 'axios'
 export default function AdminPage() {
   const navigate=useNavigate()
   function handleLogout(){
-    axios.post(`${import.meta.env.VITE_BASE_URL}/api/users/logout`,{},{withCredentials:true}).then((res)=>{      
+    axios.post(`${import.meta.env.VITE_BASE_URL}/api/users/logout`,{}).then((res)=>{      
       localStorage.removeItem('token')
       navigate('/login')
     }).catch((err)=>{
