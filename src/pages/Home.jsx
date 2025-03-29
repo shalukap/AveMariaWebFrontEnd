@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className='h-[100%] w-full  bg-primary'>
     
-      <div className="relative h-screen w-full bg-image-home shadow-[0px_4px_10px_rgba(255,255,255,0.8)] flex flex-col items-center justify-center ">
+      <div className="relative h-screen w-full bg-image-main shadow-[0px_4px_10px_rgba(255,255,255,0.8)] flex flex-col items-center justify-center ">
       
       <NavBar/> 
         
@@ -20,7 +20,7 @@ export default function Home() {
       <News/>
       <Calender/>
       </div>
-      <div className='h-full w-full mt-5'>
+      <div className='h-full w-full mt-'>
       <Vision/>
       </div>
     </div>
