@@ -20,7 +20,7 @@ export default function Home() {
       <News/>
       <Calender/>
       </div>
-      <div className='h-full w-full mt-32'>
+      <div className='h-full w-full mt-5'>
       <Vision/>
       </div>
     </div>
