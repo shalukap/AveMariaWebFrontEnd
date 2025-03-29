@@ -1,10 +1,11 @@
 import React from 'react'
+import './vision.css'
 
 export default function Vision() {
   return (
     <div className='h-screen w-full flex'>
       
-      <div className="relative h-screen sm:w-full md:w-1/2 bg-[url('./assets/img/BG.jpg')] bg-cover">
+      <div className="relative h-screen sm:w-full md:w-1/2 bg-image">
       <div className="absolute inset-0 bg-[radial-gradient(circle,transparent,theme(colors.primary)_80%)]"></div>
 
       </div>
