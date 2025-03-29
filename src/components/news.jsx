@@ -32,7 +32,7 @@ export default function News() {
       </h1>
       <div className='grid md:grid-cols-2 sm:grid-cols-1 gap-10 p-4'>
         {news.slice(0,4).map((newsItem) => (
-          <div key={newsItem.nid} className="card bg-base-100 image-full w-full shadow-xl">
+          <div key={newsItem.nid} className="card bg-base-100 image-full w-full shadow-xl overflow-hidden">
             <figure>
               <img src={newsItem.images && newsItem.images.length > 0 ? newsItem.images[0] : "/assets/img/default.jpg"} alt={newsItem.title} />
             </figure>
