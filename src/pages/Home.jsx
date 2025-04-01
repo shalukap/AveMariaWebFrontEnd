@@ -16,11 +16,11 @@ export default function Home() {
          
         
       </div>
-      <div className='h-screen w-full flex mt-5'>
-      <News/>
-      <Calender/>
+      <div className='flex flex-col lg:flex-row items-center lg:items-start justify-center gap-5 px-4 md:px-8 mt-5'>
+      <News className='w-full'/>
+      <Calender className='w-full '/>
       </div>
-      <div className='h-full w-full mt-32'>
+      <div className='h-full w-full mt-16 px-4 md:px-8'>
       <Vision/>
       </div>
     </div>
