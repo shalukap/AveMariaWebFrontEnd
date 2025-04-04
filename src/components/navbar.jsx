@@ -20,16 +20,43 @@ export default function NavBar() {
       <li><a>Home</a></li>
       <li>
         <details>
-          <summary>Parent</summary>
+          <summary>About School</summary>
           <ul className="bg-base-100 rounded-t-none p-2">
-            <li><a>Link 1</a></li>
-            <li><a>Link 2</a></li>
+            <li><a>Vision & Mission</a></li>
+            <li><a>Houses</a></li>
+            <li><a>Uniform</a></li>
+            <li><a>Anthem, Crest ,Flag</a></li>
+            <li><a>Board of Administration</a></li>
+            <ul className="bg-base-100 rounded-t-none p-2">
+              <li><a>Principal</a></li>
+              <li><a>Vice Principal</a></li>
+              <li><a>Teachers</a></li>
+            </ul>
+            <li><a>History</a></li>
+            <ul className="bg-base-100 rounded-t-none p-2">
+              <li><a>Past Principals</a></li>
+            </ul>
           </ul>
         </details>
       </li>
-      <li><a>About School</a></li>
-      <li><a>History</a></li>
+      <li><a>Facilities</a></li>
       <li><a>Clubs & Sports</a></li>
+      <ul className="bg-base-100 rounded-t-none p-2">
+        <li><a>Clubs</a></li>
+        <ul className="bg-base-100 rounded-t-none p-2">
+          <li><a>Computer Club</a></li>
+          <li><a>Chemical Club</a></li>
+          <li><a>Maths Club</a></li>
+          <li><a>Science Club</a></li>
+        </ul>
+        <li><a>Sports</a></li>
+        <ul className="bg-base-100 rounded-t-none p-2">
+          <li><a>Cricket</a></li>
+          <li><a>Football</a></li>
+          <li><a>Badminton</a></li>
+          <li><a>Table Tennis</a></li>
+        </ul>
+      </ul>
       <li><a>Contact Us</a></li>
     </ul>
  
