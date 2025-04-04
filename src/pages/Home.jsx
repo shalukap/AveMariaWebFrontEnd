@@ -7,10 +7,14 @@ import './home.css'
 
 export default function Home() {
   return (
-    <div className='h-[100%] w-full  bg-primary'>
-    
-      <div className="relative h-screen w-full bg-image-main  flex flex-col items-center justify-center ">
+    <div className='h-[100%] w-full  bg-menu'>
       
+      <div className="relative h-screen w-full bg-image-main  flex flex-col items-center justify-center ">
+      <div className="absolute inset-0 bg-menu opacity-70 z-0"></div>
+      <div className="absolute top-10 left-0 w-full h-full flex flex-col items-center justify-center">
+        <img className='w-[30vh] h-[40vh] relative' src="./assets/img/logoWhite.png" alt="" />
+        <h1 className='sm:text-4xl md:text-5xl font-bold font-Amaranth p-5 text-white'>Ave Maria Convent </h1>
+      </div>
       <NavBar/> 
         
          

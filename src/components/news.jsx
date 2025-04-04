@@ -27,7 +27,7 @@ export default function News() {
   return (
     <>     
      <div className='h-[100%] sm:w-full md:w-3/4 pl-10'>
-      <h1 className='sm:text-7xl md:text-7xl font-bold font-Amaranth p-5 text-white'>
+      <h1 className='sm:text-7xl md:text-5xl font-bold font-Amaranth p-5 text-white'>
         Latest News
       </h1>
       <div className='grid md:grid-cols-2 md:grid-rows-2 sm:grid-cols-1 gap-10 p-4'>
@@ -39,7 +39,7 @@ export default function News() {
             <div className="card-body relative">
               <h2 className="card-title">{newsItem.title}</h2>
               <div className="card-actions justify-end">
-                <button className="absolute bottom-5 right-5 btn btn-primary">
+                <button className="absolute bottom-5 right-5 btn bg-[#0000FF] text-white border-none">
                   Read more
                 </button>
               </div>

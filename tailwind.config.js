@@ -8,8 +8,9 @@
         Amaranth: ["Amaranth", "sans-serif"]
       },
       colors: {
-        primary: '#0c0d65',
-        secondary: '#ffffff',        
+        primary: '#151b54',
+        secondary: '#ffffff',
+        menu: '#151b54',        
     },
     screens: {
       sm: "640px",
