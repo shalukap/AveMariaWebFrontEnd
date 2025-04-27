@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import NewsEvent from './NewsEvent'
 
 export default function News() {
   const [news,setNews]=useState([])
@@ -26,30 +27,19 @@ export default function News() {
 
   return (
     <>     
-     <div className='h-[100%] sm:w-full md:w-3/4 pl-10'>
+     <div className='relative h-[100%] sm:w-full md:w-3/4 pl-10'>
       <h1 className='sm:text-7xl md:text-5xl font-bold font-Amaranth p-5 text-white'>
         Latest News
       </h1>
       <div className='grid md:grid-cols-2 md:grid-rows-2 sm:grid-cols-1 gap-10 p-4'>
         {news.slice(0,4).map((newsItem) => (
-          <div key={newsItem.nid} className="card bg-base-100 image-full w-full h-96 shadow-xl overflow-hidden">
-            <figure>
-              <img src={newsItem.images && newsItem.images.length > 0 ? newsItem.images[0] : "/assets/img/default.jpg"} alt={newsItem.title} className='w-full h-full cover'/>
-            </figure>
-            <div className="card-body relative">
-              <h2 className="card-title">{newsItem.title}</h2>
-              <div className="card-actions justify-end">
-                <button className="absolute bottom-5 right-5 btn bg-[#0000FF] text-white border-none">
-                  Read more
-                </button>
-              </div>
-            </div>
-          </div>
+          <NewsEvent key={newsItem.nid} nid={newsItem.nid} title={newsItem.title} images={newsItem.images} />
         ))}
       </div>
+      <button className='btn bg-[#0000FF] text-white border-none w-full bottom-0 right-0' onClick={() => navigate('/morenews')}>More News</button>
     </div>
       
-
+ 
 
 
     

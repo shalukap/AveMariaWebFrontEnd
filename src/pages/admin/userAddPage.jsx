@@ -69,6 +69,7 @@ export default function userRegisterPage() {
             }
             if (password){
                 data.password=password
+                
             }
             const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/users/` + uid, data,{
                 headers:{Authorization:"Bearer"+token}

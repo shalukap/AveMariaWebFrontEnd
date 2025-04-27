@@ -3,11 +3,12 @@ import { jwtDecode } from 'jwt-decode'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
+import { formatDate } from './date'
 
 
 export default function AddCalenderPage() {
     
-    const [date,setDate]=useState("")
+    const [date,setDate]=useState(new Date())
     const [event,setEvent]=useState("")
     const [enteredBy,setEnteredBy]=useState("")
     const {id}= useParams()
@@ -28,9 +29,12 @@ export default function AddCalenderPage() {
                   axios.get(`${import.meta.env.VITE_BASE_URL}/api/calender/` + id).then((res) => {
                     const event = res.data            
                     
-                    setDate(event[0].date)
+                    setDate(formatDate(new Date(event[0].date)))
                     setEvent(event[0].event)
                     setEnteredBy(user.name)
+                    
+                    
+                    
                   })
                 }              
             } catch (error) {
@@ -51,7 +55,7 @@ export default function AddCalenderPage() {
         try {
             if (id){
                 const res = await axios.put('http://localhost:3000/api/calender/' + id, { 
-                    date:date,
+                    date:new Date(date),
                     event:event,
                     enteredBy:enteredBy },{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}).then((res) => {
                     toast.success('Event updated successfully')
@@ -62,7 +66,7 @@ export default function AddCalenderPage() {
                 return
             }else{
               const res = await axios.post('http://localhost:3000/api/calender', { 
-                  date:date,
+                  date:formatDate(new Date(date)),
                   event:event,
                   enteredBy:enteredBy },{headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}).then((res) => {
                  

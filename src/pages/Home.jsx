@@ -14,6 +14,7 @@ export default function Home() {
       <div className="absolute top-10 left-0 w-full h-full flex flex-col items-center justify-center">
         <img className='w-[30vh] h-[40vh] relative' src="./assets/img/logoWhite.png" alt="" />
         <h1 className='sm:text-4xl md:text-5xl font-bold font-Amaranth p-5 text-white'>Ave Maria Convent </h1>
+        <h2 className='sm:text-3xl md:text-4xl font-bold font-Amaranth p-5 text-white'>Negombo </h2>
       </div>
       <NavBar/> 
         

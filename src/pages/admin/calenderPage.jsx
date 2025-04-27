@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { Pencil, Trash } from "lucide-react";
 import { jwtDecode } from 'jwt-decode';
 import { CgAdd  } from "react-icons/cg";
+import toast from 'react-hot-toast';
+import { formatDate } from './date';
 
 
 export default function CalenderPage() {
@@ -33,6 +35,19 @@ export default function CalenderPage() {
     }
     fetchEvents()
   }, [])
+
+  async function handleDelete(eventId) {
+    if (!window.confirm('Are you sure you want to delete this event?')) {
+      return
+    }  
+          
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/calender/${eventId}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((res) => { 
+      toast.success(res.data)     
+      setEvents(events.filter((event) => event.cid !== eventId))
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
   return (
     <div className="p-6 bg-white shadow-lg rounded-2xl">
   <h2 className="text-2xl font-bold mb-6 text-gray-800">Event List</h2>
@@ -53,7 +68,7 @@ export default function CalenderPage() {
           className="hover:bg-gray-50 transition-colors duration-200"
         >
           <td className="px-6 py-4 text-gray-800 font-medium">{event.cid}</td>
-          <td className="px-6 py-4 text-gray-600">{event.date}</td>
+          <td className="px-6 py-4 text-gray-600">{formatDate(new Date(event.date))}</td>
           <td className="px-6 py-4 text-gray-600">{event.event}</td>
           
           <td className="px-6 py-4 text-gray-600">{event.enterdBy}</td>
@@ -65,12 +80,16 @@ export default function CalenderPage() {
               >
                 <Pencil size={16} />
               </button>
+              {user.role === 'Admin' && (
               <button
                 className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
                 title="Delete"
+                onClick={()=>handleDelete(event.cid)}
               >
                 <Trash size={16} />
               </button>
+                
+              )}
             </div>
           </td>
         </tr>

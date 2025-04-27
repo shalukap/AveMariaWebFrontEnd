@@ -5,6 +5,7 @@ import { jwtDecode } from 'jwt-decode'
 
 import { CgAdd  } from "react-icons/cg";
 import { formatDate } from './date';
+import toast from 'react-hot-toast';
 
 export default function NewsPage() {
   const [news,setNews]=useState([])
@@ -38,7 +39,19 @@ export default function NewsPage() {
       
     }
     fetchNews()
-  },[news])
+  },[])
+  async function handleDelete(id){   
+   
+    if (!window.confirm('Are you sure you want to delete this news?')) {
+      return
+    }  
+    await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/news/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((res) => { 
+      toast.success(res.data)     
+      setNews(news.filter((n) => n.nid !== id))
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
   return (
     /*
     <div className='w-full h-full relative items-center flex-col'>
@@ -114,6 +127,15 @@ export default function NewsPage() {
                   >
                     View
                   </button>
+                  {user.role === 'Admin' && (
+                  <button
+                    className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600'
+                    onClick={() =>{handleDelete(n.nid)}}
+                  >
+                    Delete
+                  </button>
+                    
+                  )}
                 </div>
               </td>
             </tr>

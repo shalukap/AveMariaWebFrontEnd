@@ -1,7 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 export default function NavBar() {
+  const dropDownRef=useRef(null)
   const [isOpen,setIsOpen] =useState(false)
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (!event.target.closest('summary')) {
+        document.querySelectorAll('details').forEach(details => {
+          details.removeAttribute('open');
+        });
+      }
+    }
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [])
   return (
     <div className='h-screen p-5 overflow-visible'>
     <div className="navbar bg-opacity-50 rounded-3xl text-white p-5 sticky top-0 z-50 mt-10 ">
@@ -19,7 +33,7 @@ export default function NavBar() {
       <li>
         <details>
           <summary>About School</summary>
-          <ul className="bg-menu rounded-t-none p-2 text-sm">
+          <ul className="bg-menu rounded-t-none p-2 text-sm" onClick={()=>setIsOpen(!isOpen)}>
             <li><a>Vision & Mission</a></li>
             <li><a>Houses</a></li>
             <li><a>Uniform</a></li>

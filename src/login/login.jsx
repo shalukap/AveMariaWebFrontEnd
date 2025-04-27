@@ -27,11 +27,17 @@ export default function Login() {
                     toast.success('Login Success')
                     setIsloading(false)
                 }else{                    
-                    toast.error('You are not authorized to login')                    
+                    toast.error('You are not authorized to login')
+                    window.location.reload()
+                    setIsloading(false)                 
+                                       
                    }
                 
             }).catch((err)=>{                
-                toast.error("Username or password is incorrect")             
+                toast.error("Username or password is incorrect")
+                window.location.reload()
+                setIsloading(false)               
+                            
             })        
         
     }
