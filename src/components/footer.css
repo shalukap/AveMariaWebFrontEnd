@@ -1,0 +1,6 @@
+.bgImg{
+    background-image: url("../assets/img/footer.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}

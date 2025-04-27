@@ -4,12 +4,13 @@ import Calender from '../components/calender'
 import Vision from '../components/vision'
 import NavBar from '../components/navbar'
 import './home.css'
+import Footer from '../components/footer'
 
 export default function Home() {
   return (
-    <div className='h-[100%] w-full  bg-menu'>
+    <div className='h-[100%] w-full bg-menu'>
       
-      <div className="relative h-screen w-full bg-image-main  flex flex-col items-center justify-center ">
+      <div className="relative h-screen w-full bg-image-main flex flex-col items-center justify-center">
       <div className="absolute inset-0 bg-menu opacity-70 z-0"></div>
       <div className="absolute top-10 left-0 w-full h-full flex flex-col items-center justify-center">
         <img className='w-[30vh] h-[40vh] relative' src="./assets/img/logoWhite.png" alt="" />
@@ -27,6 +28,10 @@ export default function Home() {
       </div>
       <div className='h-full w-full mt-16 px-4 md:px-8'>
       <Vision/>
+      </div>
+      <div className='h-full w-full'>
+      <Footer/>
+
       </div>
     </div>
   )

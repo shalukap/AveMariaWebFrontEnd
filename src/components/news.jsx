@@ -38,6 +38,7 @@ export default function News() {
       </div>
       <button className='btn bg-[#0000FF] text-white border-none w-full bottom-0 right-0' onClick={() => navigate('/morenews')}>More News</button>
     </div>
+    
       
  
 
