@@ -26,12 +26,12 @@ export default function Footer() {
             </div>
             <div className='justify-center items-center text-white text-md font-Amaranth '>
                 <p className='font-bold text-center text-2xl'>Contact Us</p>
-                <p className='flex text-center'><FaPhoneAlt className='m-2 text-[15px]' />0312222222</p>
+                <p className='flex text-center'><FaPhoneAlt className='m-2 text-[15px]' /><a href="tel:+94312227747">+94312227747</a></p>
                 <p className='flex text-center'><MdEmail className='m-2' />info@avemariaconvent.edu.lk</p>
                 <p className='flex text-center cursor-pointer hover:underline' onClick={() => window.open("https://maps.app.goo.gl/K6aBW3Jn7v2Gye9z8")}><IoLocation className='m-2' /> Ave Maria Convent, Old Chilaw Road, Negombo</p>
                 <div className='flex justify-center items-center border-2 rounded-lg border-white'>
                   <p>More on</p>
-                  <p className=' flex text-2xl gap-10 p-5'><IoLogoFacebook className='cursor-pointer hover:text-primary'/><IoLogoYoutube className='cursor-pointer hover:text-red-600' onClick={() => window.open("https://www.youtube.com/@avemariaconvent9230", "_blank")}/></p>
+                  <p className=' flex text-2xl gap-10 p-5'><IoLogoFacebook className='cursor-pointer hover:text-primary' onClick={() => window.open("https://www.facebook.com/share/1APWLnXhew/", "_blank")}/><IoLogoYoutube className='cursor-pointer hover:text-red-600' onClick={() => window.open("https://www.youtube.com/@avemariaconvent9230", "_blank")}/></p>
                 </div>
                 
             </div>
