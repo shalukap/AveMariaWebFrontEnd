@@ -26,6 +26,11 @@ export default function AddCalenderPage() {
                 const user=jwtDecode(token)               
                 setEnteredBy(user.name)
                 if (id) {
+                  const token = localStorage.getItem('token')
+                  if(!token){
+                      navigate('/login')
+                      return
+                  }
                   axios.get(`${import.meta.env.VITE_BASE_URL}/api/calender/` + id).then((res) => {
                     const event = res.data            
                     
@@ -50,6 +55,11 @@ export default function AddCalenderPage() {
         e.preventDefault();
         if(!date || !event ){
             alert("Please fill all the fields")
+            return
+        }
+        const token = localStorage.getItem('token')
+        if(!token){
+            navigate('/login')
             return
         }
         try {

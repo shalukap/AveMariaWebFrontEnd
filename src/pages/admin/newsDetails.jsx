@@ -67,7 +67,12 @@ export default function NewsDetails() {
         fetchNews()
     }, [id])
     
-    async function handleSubmit(e) {       
+    async function handleSubmit(e) { 
+      const token = localStorage.getItem('token') 
+      if(!token){
+          navigate('/login')
+          return
+      }      
         e.preventDefault();
         const promises=[]
         for (let i = 0; i < images.length; i++) {
@@ -86,6 +91,11 @@ export default function NewsDetails() {
             isApproved:isApproved
         }
         try {
+          const token = localStorage.getItem('token') 
+          if(!token){
+              navigate('/login')
+              return
+          }
             if(id){
                 const res=axios.put(`${import.meta.env.VITE_BASE_URL}/api/news/` + id,newsData,
                     {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}).then((res)=>{

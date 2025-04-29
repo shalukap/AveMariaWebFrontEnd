@@ -40,7 +40,11 @@ export default function CalenderPage() {
     if (!window.confirm('Are you sure you want to delete this event?')) {
       return
     }  
-          
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/login')
+      return  
+    }    
       await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/calender/${eventId}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((res) => { 
       toast.success(res.data)     
       setEvents(events.filter((event) => event.cid !== eventId))

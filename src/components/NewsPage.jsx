@@ -17,9 +17,7 @@ export default function NewsPage() {
  const {id}=useParams()
  const [news,setNews]=useState([])
  const navigate=useNavigate()
- const onInit = () => {
-  console.log('lightGallery has been initialized');
-};
+ 
 useEffect(() => {
     const fetchNews=async()=>{
         try {
@@ -34,7 +32,9 @@ useEffect(() => {
     }
     fetchNews()
 },[id])
-
+const onInit = () => {
+  console.log('lightGallery has been initialized');
+};
     
     
   return (

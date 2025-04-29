@@ -44,6 +44,11 @@ export default function NewsPage() {
    
     if (!window.confirm('Are you sure you want to delete this news?')) {
       return
+    }
+    const token = localStorage.getItem('token') 
+    if(!token){
+        navigate('/login')
+        return
     }  
     await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/news/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}}).then((res) => { 
       toast.success(res.data)     
