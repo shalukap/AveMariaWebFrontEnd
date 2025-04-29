@@ -93,8 +93,7 @@ export default function NewsPage() {
         <thead className='bg-blue-500 text-white'>
           <tr>
             <th className='p-4 text-left'>ID</th>
-            <th className='p-4 text-left'>Title</th>
-            <th className='p-4 text-left'>Description</th>
+            <th className='p-4 text-left'>Title</th>           
             <th className='p-4 text-left'>Images</th>
             <th className='p-4 text-left'>Event Date</th>
             <th className='p-4 text-left'>Reported By</th>
@@ -107,7 +106,7 @@ export default function NewsPage() {
             <tr key={n.nid} className='hover:bg-gray-50 transition-colors'>
               <td className='p-4'>{n.nid}</td>
               <td className='p-3 font-medium'>{n.title}</td>
-              <td className='p-3 text-gray-600'>{n.description}</td>
+             
               <td className='p-3'>
                 <div className='flex space-x-2 w-10 h-10'>
                  <img src={n.images && n.images.length > 0 ? n.images[0] : '/assets/img/default.jpg'} alt="" />

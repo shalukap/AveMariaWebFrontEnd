@@ -23,7 +23,7 @@ export default function NewsDetails() {
     const [reportedBy,setReportedBy]=useState('')
     const [imagesUploadedBy,setImagesUploadedBy]=useState('')
     const [isApproved,setIsApproved]=useState(false)
-   
+    
     const { id } = useParams();
     
     
@@ -40,11 +40,13 @@ export default function NewsDetails() {
 
                 // take the data to news page
                 if(id){  
+                  
                      
                     await axios.get(`${import.meta.env.VITE_BASE_URL}/api/news/` + id,{
                         headers:{Authorization:`Bearer ${token}`}
                     }).then((res) => {                       
-                        const news = res.data[0]
+                        const news = res.data               
+                        
                         setTitle(news.title)
                         setDescription(news.description)
                         setEventdate(formatDate(new Date(news.eventdate)))
@@ -52,7 +54,7 @@ export default function NewsDetails() {
                         setImagesUploadedBy(news.imagesUploadedBy)
                         setReportedBy(news.reportedBy)
                         setImageUrls(news.images)
-                        console.log(news);                 
+                                      
                     }).catch((err) => {
                         console.log(err)
                     })

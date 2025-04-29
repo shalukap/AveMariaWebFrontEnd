@@ -8,6 +8,7 @@ import Login from './login/login'
 import { Toaster } from 'react-hot-toast'
 import ProtectedRoute from './components/protectedRoute'
 import MoreNews from './components/MoreNews'
+import NewsPage from './components/NewsPage'
 
 function App() {
  
@@ -18,6 +19,7 @@ function App() {
     <Routes path='/*'>
     <Route path='/' element={<Home/>}/> 
     <Route path='/morenews' element={<MoreNews/>}/> 
+    <Route path='/newspage/:id' element={<NewsPage/>}/> 
     <Route path='/login' element={<Login/>}/> 
     <Route element={<ProtectedRoute/>}>
       <Route path='/admin/*' element={<AdminPage/>} />  

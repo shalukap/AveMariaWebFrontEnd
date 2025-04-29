@@ -52,9 +52,10 @@ export default function NavBar() {
           </details>
       </li>
       <li><a>Facilities</a></li>
+      <li><a>Associations</a></li>
       <li>
       <details>
-        <summary>Clubs & Sports</summary>
+        <summary>Sports</summary>
      
       <ul className="bg-menu rounded-t-none p-2 text-sm">
         <li><a>Clubs</a></li>
