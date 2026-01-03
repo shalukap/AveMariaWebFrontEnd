@@ -1,0 +1,42 @@
+.bg-image-main{
+    background-image: url("../assets/img/001.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .bg-image-main {
+        background-size: contain; /* Ensures the full image is visible */
+        background-position: top; /* Aligns the image for better visibility */
+    }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+    .bg-image-main {
+        background-size: cover; /* Keeps the background responsive */
+        background-position: center top; /* Ensures visibility of key elements */
+    }
+}
+@media (max-width: 768px) {
+    .bg-image-main {
+        background-size: contain; /* Ensures the full image is visible */
+        background-position: top; /* Aligns the image for better visibility */
+    }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+    .bg-image-main {
+        background-size: cover; /* Keeps the background responsive */
+        background-position: center top; /* Ensures visibility of key elements */
+    }
+}
+
+
+
+
+
+
+
