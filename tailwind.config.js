@@ -5,7 +5,8 @@
   theme: {
     extend: {
       fontFamily: {
-        Amaranth: ["Amaranth", "sans-serif"]
+        Amaranth: ["Amaranth", "sans-serif"],
+        LoveLight: ["Love Light"],
       },
       colors: {
         primary: '#151b54',

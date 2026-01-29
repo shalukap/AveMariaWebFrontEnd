@@ -6,7 +6,7 @@ import NavBar from '../components/navbar'
 import './home.css'
 import Footer from '../components/footer'
 import Mission from '../components/mission'
-import SisterMessage from '../components/sisterMessage'
+import SisterMessage from '../components/SisterMessage'
 
 export default function Home() {
   return (

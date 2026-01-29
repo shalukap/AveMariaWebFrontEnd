@@ -88,7 +88,7 @@ export default function AdminPage() {
           <Route path='/calender/add/:id' element={<AddCalenderPage/>}/>
           <Route path='/users' element={<UserPage/>}/>
           <Route path='/users/add' element={<UserRegisterForm/>}/>
-          <Route path='/users/add/:uid' element={<UserRegisterForm/>}/>
+          <Route path='/users/add/:id' element={<UserRegisterForm/>}/>
         </Routes>
       </div>
     </div>

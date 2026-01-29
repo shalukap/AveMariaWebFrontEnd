@@ -4,8 +4,10 @@ import React, { use, useEffect, useState } from 'react'
 import { set } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext.jsx';
 
 export default function userRegisterPage() {
+    const {user}=useAuth()
     const navigate=useNavigate()
     const [fname,setFname]=useState('')
     const [email,setEmail]=useState('')
@@ -17,7 +19,7 @@ export default function userRegisterPage() {
     const [isAdmin,setIsAdmin]=useState(false)
     const [isEdit,setIsEdit]=useState(false)
     
-    const{uid}=useParams()
+    const{id}=useParams()
    
     
     useEffect(() => {   
@@ -31,15 +33,16 @@ export default function userRegisterPage() {
                 }
               
                 setIsAdmin(user.role === 'Admin')
-                setIsEdit(uid)
-                if (uid) {
-                  axios.get(`${import.meta.env.VITE_BASE_URL}/api/user/` + id).then((res) => {
-                    const user = res.data                                       
-                    setFname(user[0].name)
-                    setEmail(user[0].email)                   
-                    setRole(user[0].role)
-                    setPhone(user[0].phone)
-                    setStatus(user[0].status)
+                setIsEdit(id)
+                if (id) {
+                  axios.get(`${import.meta.env.VITE_BASE_URL}/api/users/` + id,{headers:{Authorization:`Bearer ${token}`}}).then((res) => {
+                    const user = res.data     
+                    console.log(user)                                  
+                    setFname(user.name)
+                    setEmail(user.email)                   
+                    setRole(user.role)
+                    setPhone(user.phone)
+                    setStatus(user.status)
                   })
                 }              
             } catch (error) {
@@ -47,7 +50,7 @@ export default function userRegisterPage() {
             }
         }
         fetchUsers()
-    }, [uid])
+    }, [id])
     async function  handleSubmit() {                       
         if (password !== confiremPassword) {
             toast.error('Password does not match')
@@ -59,43 +62,49 @@ export default function userRegisterPage() {
             navigate('/login')
             return
         }
-        if(uid){
+        if(id){
             const data={
                 name:fname,
                 email:email,                
                 role:role,
+                status:status,
                 phone:phone,
                 status:status
             }
             if (password){
                 data.password=password
+                console.log(data.password)
                 
             }
-            const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/users/` + uid, data,{
-                headers:{Authorization:"Bearer"+token}
+            const result = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/users/` + id, data,{
+                headers:{Authorization:`Bearer ${token}`}
             }).then((res) => {
                 toast.success('User updated successfully')
                 navigate('/admin/users')
             }).catch((err) => {
                 toast.error(err.response.data.message)
+                console.log(err)
                 navigate('/admin/users')
             })
-        }else{
-            const result = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/users/register`, {
+        }else{            
+            const result = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/register`, {
                 name:fname,
                 email:email,
                 password:password,
+                password_confirmation:confiremPassword,
                 role:role,
+                status:status,
                 phone:phone
                 
             },{
-                headers:{Authorization:"Bearer"+token
+                headers:{Authorization:`Bearer ${token}`}
     
-                }}).then((res) => {
+                }).then((res) => {              
                     toast.success('User added successfully')
                     navigate('/admin/users')
                 }).catch((err) => {
                     toast.error(err.response.data.message)
+                   
                     navigate('/admin/users')
                 })
         }
@@ -148,10 +157,7 @@ export default function userRegisterPage() {
                            
                         </div>
 
-                        <div>
-                            <input type="text" placeholder="Phone Number" readOnly={!isAdmin} name='phone' className="input input-bordered w-full" onChange={(e) => setPhone(e.target.value)}value={phone}required />
-                            
-                        </div>
+                        
 
                         <button type="submit" className="btn btn-primary w-full" onClick={handleSubmit}>{isEdit ? 'Update' : 'Register'}</button>
                     </div>

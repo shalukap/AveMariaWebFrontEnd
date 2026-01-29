@@ -11,6 +11,7 @@ import MoreNews from './components/MoreNews'
 import NewsPage from './components/NewsPage'
 import PstPrinceples from './pages/PstPrinceples'
 import SocietyPage from './components/SocietyPage'
+import Swal from 'sweetalert2'
 
 function App() {
  
